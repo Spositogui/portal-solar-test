@@ -251,7 +251,6 @@ DEPENDENCIES
   rails-assets-jquery!
   roo (~> 2.8.0)
   rspec-rails
-  rubocop (~> 0.79.0)
   rubocop-rails
   sass-rails (~> 5)
   selenium-webdriver
