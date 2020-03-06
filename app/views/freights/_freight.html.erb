@@ -1,0 +1,5 @@
+<% if value.eql?('Error') %>
+  <p>CEP não válido.</p>
+<% else %>
+  <p><%= "Valor do Frete: #{number_to_currency value}" %></p>
+<% end %>

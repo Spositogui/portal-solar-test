@@ -4,6 +4,9 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: <%= ENV['DB_USERNAME'] %>
   password: <%= ENV['DB_PASSWORD'] %>
+test:
+  <<: *default
+  database: PortalSolarDevTest_test
 development:
   <<: *default
   database: PortalSolarDevTest_development
