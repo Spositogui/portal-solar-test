@@ -12,4 +12,9 @@ class PowerGenerator < ApplicationRecord
 
   enum structure_type: { metalico: 0, ceramico: 1, fibrocimento: 2, laje: 3,
                          solo: 4, trapezoidal: 5 }
+
+  scope :simple_search_pg, lambda { |text|
+    where('unaccent(name) ILIKE :q OR unaccent(description) ILIKE :q',
+          q: "%#{text}%")
+  }
 end

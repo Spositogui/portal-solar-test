@@ -85,6 +85,10 @@ p.power_generator-card__price {
   
 }
 
+label.hidden {
+  display: none;
+}
+
 .searcher__radio {
   display: flex;
   justify-content: space-between;
