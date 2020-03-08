@@ -6,4 +6,5 @@ Rails.application.routes.draw do
 
   get 'freight', to: 'freights#freight_value', format: 'js'
   get 'simple-search', to: 'power_generators#simple_search', format: 'js'
+  get 'advanced-search', to: 'power_generators#advanced_search', format: 'js'
 end

@@ -1,4 +1,4 @@
-<% if power_generators.count.eql?(0) %>
+<% if power_generators.blank? %>
   <p class="alert">Nenhum resultado para a sua pesquisa foi encontrado.</p>
 <% elsif power_generators.count.eql?(1) %>
   <div class="box card power_generator-card">

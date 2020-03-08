@@ -17,4 +17,29 @@ class PowerGenerator < ApplicationRecord
     where('unaccent(name) ILIKE :q OR unaccent(description) ILIKE :q',
           q: "%#{text}%")
   }
+
+  def self.advanced_search_pg(facturer, p_max, p_min, s_type)
+    p_min = 0 if p_min.blank?
+    p_max = 999_999.999 if p_max.blank?
+    return as_without_facturer(p_max, p_min, s_type) if facturer.blank?
+    return as_without_type(facturer, p_max, p_min) if s_type.blank?
+
+    where('manufacturer ILIKE ? AND price <= ? AND price >= ? AND '\
+          'structure_type = ?', facturer, p_max, p_min,
+          structure_types[s_type.downcase])
+  end
+
+  def self.as_without_facturer(p_max, p_min, s_type)
+    return where('price <= ? AND price >= ?', p_max, p_min ) if s_type.blank?
+
+    where('price <= ? AND price >= ? AND structure_type = ?',
+          p_max, p_min, structure_types[s_type.downcase])
+  end
+
+  def self.as_without_type(facturer, p_max, p_min)
+    where('manufacturer ILIKE ? AND price <= ? AND price >= ?',
+          facturer, p_max, p_min)
+  end
+
+  private_class_method :as_without_facturer, :as_without_type
 end
