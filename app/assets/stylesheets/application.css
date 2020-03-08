@@ -146,6 +146,20 @@ label.hidden {
   color: #e96443;
 }
 
+.cep-form {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+#calculated-freight{
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  font-size: medium;
+  font-weight: bold;
+}
+
 .filters {
   margin: 0;
   padding: 0
@@ -153,5 +167,18 @@ label.hidden {
 
 .filters ul {
   list-style: none;
+}
+
+.filters ul li {
+  margin-bottom: 10px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.page, .next, .last {
+  padding: 0 5px;
 }
 

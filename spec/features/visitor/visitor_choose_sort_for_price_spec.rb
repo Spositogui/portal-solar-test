@@ -9,7 +9,7 @@ feature 'Visitor sort products for price' do
     create(:power_generator, name: 'WEG HÍBRIDO', price: 30_000)
 
     visit root_path
-    find('.filters').fill_in 'Valor máximo', with: 11_000.00
+    find('#price-filter').fill_in 'Valor máximo', with: 11_000.00
     find('#price-btn-filter').click
 
     expect(page).to have_content('CELLS MONO JS')
@@ -23,7 +23,7 @@ feature 'Visitor sort products for price' do
     create(:power_generator, name: 'JSL MONOFÁSICO', price: 10_000)
 
     visit root_path
-    find('.filters').fill_in 'Valor máximo', with: 9_999.99
+    find('#price-filter').fill_in 'Valor máximo', with: 9_999.99
     find('#price-btn-filter').click
 
     expect(page).to have_content('Nenhum resultado para a sua pesquisa foi'\

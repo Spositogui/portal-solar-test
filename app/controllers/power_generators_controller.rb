@@ -27,6 +27,14 @@ class PowerGeneratorsController < ApplicationController
     render 'searches_result.js.erb'
   end
 
+  def filter_kwp
+    return if params[:q].blank?
+
+    @power_generators = PowerGenerator.where('kwp <= ?', params[:q])
+                                      .order(:name).page(params[:page]).per(6)
+    render 'searches_result.js.erb'
+  end
+
   def simple_search
     text = I18n.transliterate(params[:q])
     @power_generators = PowerGenerator.simple_search_pg(text).uniq

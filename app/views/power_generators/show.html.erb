@@ -1,7 +1,7 @@
-<div>
+<div class="cep-form">
   <%= form_with(url: freight_path, method: :get) do %>
   <%= label_tag(:q, 'CEP') %>
-  <%= number_field_tag(:q) %>
+  <%= number_field_tag(:q, nil, placeholder: 'Ex: 04602002') %>
   <%= submit_tag('Calcular Frete') %>
   <% end %>
 </div>

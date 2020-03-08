@@ -30,7 +30,7 @@ class PowerGenerator < ApplicationRecord
   end
 
   def self.as_without_facturer(p_max, p_min, s_type)
-    return where('price <= ? AND price >= ?', p_max, p_min ) if s_type.blank?
+    return where('price <= ? AND price >= ?', p_max, p_min) if s_type.blank?
 
     where('price <= ? AND price >= ? AND structure_type = ?',
           p_max, p_min, structure_types[s_type.downcase])

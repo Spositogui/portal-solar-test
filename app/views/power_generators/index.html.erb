@@ -24,16 +24,23 @@
   </div>
 
   <div class="filters">
-    <%= form_with(url: price_filter_path, method: :get) do %>
-      <h5>Filtrar por:</h5>
-      <ul>
-        <li>
+    <h5>Filtrar por:</h5>
+    <ul>
+      <li>
+        <%= form_with(url: price_filter_path, method: :get, id: 'price-filter') do %>
           <%= label_tag(:q, 'Valor máximo') %>
           <%= number_field_tag(:q, nil, step: 0.01, placeholder:'Ex: 40000.00') %>
           <%= submit_tag('Filtrar', id: 'price-btn-filter') %>
-        </li>
-      </ul>
-    <% end %>
+        <% end %>
+      </li>
+      <li>
+        <%= form_with(url: kwp_filter_path, method: :get, id: 'kwp-filter') do %>
+          <%= label_tag(:q, 'KWP máximo') %>
+          <%= number_field_tag(:q, nil, step: :any, placeholder:'Ex: 17.05') %>
+          <%= submit_tag('Filtrar', id: 'kwp-btn-filter') %>
+        <% end %>
+      </li>
+    </ul>
   </div>
 
   <%= paginate @power_generators %>
