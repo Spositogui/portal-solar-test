@@ -4,13 +4,7 @@ class PowerGeneratorsController < ApplicationController
   end
 
   def show; end
-
-  def simple_search
-    text = I18n.transliterate(params[:q])
-    @power_generators = PowerGenerator.simple_search_pg(text).uniq
-    render 'searches_result.js.erb'
-  end
-
+  
   def advanced_search
     q = params.permit(:manufacturer, :max, :min, :structure_type)
     count = 0
@@ -20,6 +14,19 @@ class PowerGeneratorsController < ApplicationController
     @power_generators = PowerGenerator.advanced_search_pg(q[:manufacturer],
                                                           q[:max], q[:min],
                                                           q[:structure_type])
+    render 'searches_result.js.erb'
+  end
+
+  def filter_price
+    return if params[:q].blank?
+
+    @power_generators = PowerGenerator.where('price <= ?', params[:q]).order(:name)
+    render 'searches_result.js.erb'
+  end
+
+  def simple_search
+    text = I18n.transliterate(params[:q])
+    @power_generators = PowerGenerator.simple_search_pg(text).uniq
     render 'searches_result.js.erb'
   end
 end

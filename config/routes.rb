@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   resources :home, only: %i[index]
   resources :power_generators, only: [:show]
 
-  get 'freight', to: 'freights#freight_value', format: 'js'
-  get 'simple-search', to: 'power_generators#simple_search', format: 'js'
   get 'advanced-search', to: 'power_generators#advanced_search', format: 'js'
+  get 'freight', to: 'freights#freight_value', format: 'js'
+  get 'price-filter', to: 'power_generators#filter_price', format: 'js'
+  get 'simple-search', to: 'power_generators#simple_search', format: 'js'
 end

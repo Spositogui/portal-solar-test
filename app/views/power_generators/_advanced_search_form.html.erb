@@ -7,12 +7,12 @@
 
     <%= label_tag(:max, 'Preç. Max') %>
     <div class="simple-form__input">
-      <%= number_field_tag(:max, nil, placeholder: 'Ex: 50000') %>
+      <%= number_field_tag(:max, nil, step: 0.01, placeholder: 'Ex: 50000.00') %>
     </div>
     
     <%= label_tag(:min, 'Preç. Min') %>
     <div class="simple-form__input">
-      <%= number_field_tag(:min, nil, placeholder: 'Ex: 1000') %>
+      <%= number_field_tag(:min, nil, step: 0.01, placeholder: 'Ex: 1000.00') %>
     </div>
       
     <%= label_tag(:structure_type, 'Tipo de estrutura') %>
