@@ -9,7 +9,7 @@ feature 'Visitor does a simple search' do
               'Conector CA otimizado para rápida ligação')
 
     visit root_path
-    fill_in 'simple search', with: 'monofásico'
+    find('.simple-form').fill_in 'simple search', with: 'monofásico'
     click_on 'Pesquisar'
 
     expect(page).to have_content('YC600 Monofásico'.upcase)
@@ -29,7 +29,7 @@ feature 'Visitor does a simple search' do
             'Fácil instalação por apenas uma pessoa com peso de 10,6 kg')
 
     visit root_path
-    fill_in 'simple search', with: 'trifásico'
+    find('.simple-form').fill_in 'simple search', with: 'trifásico'
     click_on 'Pesquisar'
 
     expect(page).to have_content('TRIFÁSICO 380V')
@@ -40,7 +40,7 @@ feature 'Visitor does a simple search' do
 
   scenario 'and search not found' do
     visit root_path
-    fill_in 'simple search', with: 'weg'
+    find('.simple-form').fill_in 'simple search', with: 'weg'
     click_on 'Pesquisar'
 
     expect(page).to have_content('Nenhum resultado para a sua pesquisa foi'\

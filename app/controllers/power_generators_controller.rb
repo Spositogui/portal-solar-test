@@ -1,10 +1,12 @@
 class PowerGeneratorsController < ApplicationController
   def index
     @power_generators = PowerGenerator.all
+    @power_generators = Kaminari.paginate_array(@power_generators)
+                                .page(params[:page]).per(6)
   end
 
   def show; end
-  
+
   def advanced_search
     q = params.permit(:manufacturer, :max, :min, :structure_type)
     count = 0
@@ -20,7 +22,8 @@ class PowerGeneratorsController < ApplicationController
   def filter_price
     return if params[:q].blank?
 
-    @power_generators = PowerGenerator.where('price <= ?', params[:q]).order(:name)
+    @power_generators = PowerGenerator.where('price <= ?', params[:q])
+                                      .order(:name).page(params[:page]).per(6)
     render 'searches_result.js.erb'
   end
 

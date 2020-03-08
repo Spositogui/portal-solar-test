@@ -1,7 +1,9 @@
 <div>
   <div class="header">
-    <div class="logo"><%= image_tag 'ps_logo.png' %></div>
-    <div class="header__title">Geradores de Energia</div>
+    <%= link_to root_path do %>
+      <div class="logo"><%= image_tag 'ps_logo.png' %></div>
+    <% end %>
+      <div class="header__title">Geradores de Energia</div>
   </div>
 
   <div class="searcher gradient">
@@ -20,7 +22,7 @@
 
     <%= render 'advanced_search_form' %>
   </div>
-  
+
   <div class="filters">
     <%= form_with(url: price_filter_path, method: :get) do %>
       <h5>Filtrar por:</h5>
@@ -34,20 +36,9 @@
     <% end %>
   </div>
 
+  <%= paginate @power_generators %>
+
   <div class="container" id="power-generator-partial">
     <%= render 'power_generators', power_generators: @power_generators %>
   </div>
-</div>
-
-<div class="filters">
-  <%= form_with(url: price_filter_path, method: :get) do %>
-    <h5>Filtrar por:</h5>
-    <ul>
-      <li>
-        <%= label_tag(:q, 'Valor máximo') %>
-        <%= number_field_tag(:q, nil, step: 0.01, placeholder:'Ex: 40000.00') %>
-        <%= submit_tag('Filtrar', id: 'price-btn-filter') %>
-      </li>
-    </ul>
-  <% end %>
 </div>
