@@ -59,7 +59,7 @@ describe PowerGenerator do
       expect(result[2].name).to eq('TRIFÁSICO C')
       expect(result[3].name).to eq('TRIFÁSICO D')
     end
-  
+
     it 'and return gerators only by min price search' do
       create(:power_generator, name: 'TRIFÁSICO A', manufacturer: 'WEG',
                                price: 39_990.0, structure_type: :metalico)
